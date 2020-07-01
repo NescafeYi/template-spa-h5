@@ -1,0 +1,74 @@
+@import '~@/less/index.less';
+
+#merry {
+    .v-error-submit {
+        .am-list-item {
+            min-height: 50px;
+            line-height: 50px;
+        }
+        label,
+        .am-input-label,
+        .am-textarea-label {
+            width: 95px;
+            margin-right: 0;
+            font-size: 16px;
+            color: #666;
+            white-space: nowrap;
+        }
+        .am-textarea-control textarea,
+        .am-list-item .am-input-control input {
+            font-size: 16px;
+            &::-webkit-input-placeholder {
+                line-height: normal; //解决不垂直居中的问题
+            }
+        }
+        .am-image-picker-item-remove {
+            background: url('~@/assets/delete-icon.png') no-repeat;
+            background-size: cover;
+            right: 0;
+            top: 0;
+        }
+        .select {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            font-size: 16px;
+            .select-right {
+                flex: 1;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .am-icon,
+                .holder {
+                    font-size: 16px;
+                    color: @color-text-placeholder;
+                }
+            }
+        }
+        .describle {
+            margin-top: 10px;
+            textarea {
+                min-height: 116px;
+            }
+        }
+        .upload-box {
+            display: flex;
+            align-items: top;
+            background: #fff;
+            padding-top: 14px;
+            .am-image-picker {
+                flex: 1;
+            }
+            .am-image-picker-list {
+                padding: 0;
+            }
+            .am-image-picker-item.am-image-picker-upload-btn {
+                background: #f5f5f5;
+            }
+        }
+        .footer {
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+    }
+}
