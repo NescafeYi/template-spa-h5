@@ -28,7 +28,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### 当前项目已扩展（在creact-react-app的基础上）
 - 兼容ie9+
 - 可使用less sass
-- 引进antd，且按需引入，可配置antd自定义主题
+- 使用vw方案适配移动端
+- 引进antd-mobile，且按需引入，可配置antd-mobile自定义主题
 - 使用react-router
 - 使用路径别名 `tsconfig.json`
 - 改写 creact-react-app内嵌的eslint规则 `.eslintrc.json`
@@ -37,5 +38,3 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - 可在 `setupProxy.js` 修改反向代理
 - 引进axios，并配置axios拦截器 `axios-config.js`
 - 部分工具 `utils` 
-# template-spa-h5
-# template-spa-h5

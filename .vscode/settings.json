@@ -1,0 +1,7 @@
+{
+    "templateGenerator.templatesPath": "${rootPath}/templates",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+}

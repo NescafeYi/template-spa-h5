@@ -3,7 +3,7 @@
  */
 
 import Axios from 'axios';
-import { message } from 'antd';
+import { Toast } from 'antd-mobile';
 
 
 /**
@@ -25,16 +25,16 @@ Axios.interceptors.response.use((response) => {
     if (response.data && response.data.status === 200) {
         return response.data;
     }
-    message.error((response.data && response.data.message) || Message.ERROR);
+    Toast.error((response.data && response.data.message) || Message.ERROR);
     return Promise.reject(response);
 }, (error) => {
     // 对响应错误做点什么
     switch (error.response.status) {
         case 401: case 403:
-            message.error((error.response.data && error.response.data.message) || Message.ERROR);
+            Toast.fail((error.response.data && error.response.data.message) || Message.ERROR);
             break;
         default:
-            message.error(Message.ERROR);
+            Toast.fail(Message.ERROR);
     }
     return Promise.reject(error.response);
 });

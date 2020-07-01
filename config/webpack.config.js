@@ -30,7 +30,7 @@ const postcssNormalize = require('postcss-normalize');
 const appPackageJson = require(paths.appPackageJson);
 
 const postcssAspectRatioMini = require('postcss-aspect-ratio-mini');
-const postcssPxToViewport = require('postcss-px-to-viewport');
+const postcssPxToViewport = require('postcss-px-to-viewport-opt');
 const postcssWriteSvg = require('postcss-write-svg');
 // const postcssCssnext = require('postcss-cssnext');
 const postcssViewportUnits = require('postcss-viewport-units');
@@ -126,16 +126,17 @@ module.exports = function (webpackEnv) {
               viewportUnit: 'vw', // (String) 转化的单位.
               selectorBlackList: ['.ignore', '.hairlines', '.list-row-bottom-line', '.list-row-top-line'], //忽略转换的css选择器
               minPixelValue: 1, // (Number) 设置要替换的最小像素值.
-              mediaQuery: false // (Boolean) 允许在媒体查询中转换px.
+              mediaQuery: false, // (Boolean) 允许在媒体查询中转换px.
+              exclude: /(\/|\\)(node_modules)(\/|\\)/
             }),
             postcssWriteSvg({
               utf8: false
             }),
             // postcssPresetEnv({}),
-            // postcssViewportUnits({
-            //  filterRule: rule => rule.selector.indexOf('::after') === -1 && rule.selector.indexOf('::before') === -1 && rule.selector.indexOf(':after') === -1 && rule.selector.indexOf(':before') === -1
-            // }),
-            postcssViewportUnits({}),
+            postcssViewportUnits({
+              filterRule: rule => rule.selector.includes('::after') && rule.selector.includes('::before') && rule.selector.includes(':after') && rule.selector.includes(':before')
+            }),
+            // postcssViewportUnits({}),
             cssnano({
               "cssnano-preset-advanced": {
                 zindex: false,
@@ -166,7 +167,7 @@ module.exports = function (webpackEnv) {
           options: {
             sourceMap: true,
             modifyVars: preProcessor === 'less-loader' && {
-              // 引入antd 主题颜色覆盖文件
+              // 引入主题颜色覆盖文件
               'hack': `true; @import "${path.join(paths.appSrc, 'less', 'theme.less')}";` // Override with less file
             },
             javascriptEnabled: preProcessor === 'less-loader'
