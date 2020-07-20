@@ -57,7 +57,8 @@ export const GetDateByTime = (time = +new Date()) => {
     * decimals：保留几位小数
     * dec_point：小数点符号
     * thousands_sep：千分位符号
-    * */
+    * 
+*/
 export const NumberFormat = (number, decimals = 2, dec_point = '.', thousands_sep = ',') => {
     let dec = String(number).split('.')[1];
     if (!Number(dec)) decimals = 0; //如果小数都是0，则不显示小数
@@ -132,7 +133,7 @@ export const CompressImage = (file) => {
         // 获取图片（加载图片是为了获取图片的宽高）
         const img = new Image();
         img.src = window.URL.createObjectURL(file);
-        img.onerror = error => reject(error);
+        img.onerror = (error) => reject(error);
         img.onload = () => {
             // 画布宽高
             const canvasWidth = document.documentElement.clientWidth * window.devicePixelRatio;
@@ -146,20 +147,21 @@ export const CompressImage = (file) => {
 
             // 将原始图片按缩放因子缩放后，绘制到画布上
             const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext("2d");
+            const ctx = canvas.getContext('2d');
             const imageWidth = img.width * scale;
             const imageHeight = img.height * scale;
             canvas.width = imageWidth;
             canvas.height = imageHeight;
-            ctx.fillStyle = "#fff";
+            ctx.fillStyle = '#fff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // const dx = (canvasWidth - imageWidth) / 2;
             // const dy = (canvasHeight - imageHeight) / 2;
             ctx.drawImage(img, 0, 0, imageWidth, imageHeight);
             // 导出新图片
             // 指定图片 MIME 类型为 'image/jpeg', 通过 quality 控制导出的图片质量，进行实现图片的压缩
-            const quality = 0.92
-            canvas.toBlob(file => resolve(file), "image/jpeg", quality);
+            const quality = 0.92;
+            canvas.toBlob((file) => resolve(file), 'image/jpeg', quality);
         };
     });
-}
+};
+

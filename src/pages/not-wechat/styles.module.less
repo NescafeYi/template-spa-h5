@@ -1,10 +1,15 @@
-#merry {
-    .page-not-wechat {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background-color: #fff;
+#page-not-wechat {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #fff;
+    :global {
+        .am-result {
+            padding: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 }

@@ -1,5 +1,5 @@
 
-import styles from './styles.module.less'
+import styles from './styles.module.less';
 
 export default class Empty extends React.Component {
     static defaultProps = {
@@ -9,16 +9,16 @@ export default class Empty extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {};
     }
 
     render() {
         const { imgUrl, text } = this.props;
         return (
-            <div className={styles["page-empty"]}>
-                <img src={imgUrl} alt='' />
-                <p className='empty-text'>{text}</p>
+            <div className={styles['page-empty']}>
+                <img src={imgUrl} alt="" />
+                <p className={styles['empty-text']}>{text}</p>
             </div>
-        )
+        );
     }
 }

@@ -25,5 +25,5 @@ export default (loader, loading = LoadingComponent) => {
         loader,
         loading
     });
-}
+};
 

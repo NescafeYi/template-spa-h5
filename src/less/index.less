@@ -1,20 +1,13 @@
 // 样式文件入口，注意引入顺序
 
-@import "./theme.less";
-
+// 全局公用变量和方法
 @import "./global/index.less";
 
+// 初始化样式
+@import './init.less';
 
-// body {
-//   margin: 0;
-//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-//     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-//     sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
+// 公共样式
+@import "./common.less";
 
-// code {
-//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-//     monospace;
-// }
+// 预览图片组件样式
+@import "~react-photoswipe/lib/photoswipe.css";

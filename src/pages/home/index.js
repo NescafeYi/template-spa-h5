@@ -14,18 +14,18 @@ const data = [
     {
         img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
         title: 'Meet hotel',
-        des: '不是所有的兼职汪都需要风吹日晒',
+        des: '不是所有的兼职汪都需要风吹日晒'
     },
     {
         img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
         title: 'McDonald\'s invites you',
-        des: '不是所有的兼职汪都需要风吹日晒',
+        des: '不是所有的兼职汪都需要风吹日晒'
     },
     {
         img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
         title: 'Eat the week',
-        des: '不是所有的兼职汪都需要风吹日晒',
-    },
+        des: '不是所有的兼职汪都需要风吹日晒'
+    }
 ];
 const NUM_SECTIONS = 5;
 const NUM_ROWS_PER_SECTION = 5;
@@ -43,7 +43,7 @@ export default class Demo extends React.Component {
             getRowData,
             getSectionHeaderData: getSectionData,
             rowHasChanged: (row1, row2) => row1 !== row2,
-            sectionHeaderHasChanged: (s1, s2) => s1 !== s2,
+            sectionHeaderHasChanged: (s1, s2) => s1 !== s2
         });
 
         this.sectionIDs = [];
@@ -52,7 +52,7 @@ export default class Demo extends React.Component {
         this.state = {
             dataSource,
             isLoading: true,
-            height: document.documentElement.clientHeight * 3 / 4,
+            height: document.documentElement.clientHeight * 3 / 4
         };
     }
 
@@ -67,7 +67,7 @@ export default class Demo extends React.Component {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRowsAndSections(dataBlobs, this.sectionIDs, this.rowIDs),
                 isLoading: false,
-                height: hei,
+                height: hei
             });
         }, 600);
     }
@@ -93,7 +93,7 @@ export default class Demo extends React.Component {
             this.genData(++pageIndex);
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRowsAndSections(dataBlobs, this.sectionIDs, this.rowIDs),
-                isLoading: false,
+                isLoading: false
             });
         }, 1000);
     }
@@ -124,7 +124,7 @@ export default class Demo extends React.Component {
                     backgroundColor: '#F5F5F9',
                     height: 8,
                     borderTop: '1px solid #ECECED',
-                    borderBottom: '1px solid #ECECED',
+                    borderBottom: '1px solid #ECECED'
                 }}
             />
         );
@@ -141,9 +141,10 @@ export default class Demo extends React.Component {
                             lineHeight: '50px',
                             color: '#888',
                             fontSize: 18,
-                            borderBottom: '1px solid #F6F6F6',
+                            borderBottom: '1px solid #F6F6F6'
                         }}
-                    >{obj.title}</div>
+                    >{obj.title}
+                    </div>
                     <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
                         <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
                         <div style={{ lineHeight: 1 }}>
@@ -157,13 +158,15 @@ export default class Demo extends React.Component {
 
         return (
             <ListView
-                ref={el => this.lv = el}
+                ref={(el) => this.lv = el}
                 dataSource={this.state.dataSource}
                 renderHeader={() => <span>header</span>}
-                renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-                    {this.state.isLoading ? 'Loading...' : 'Loaded'}
-                </div>)}
-                renderSectionHeader={sectionData => (
+                renderFooter={() => (
+                    <div style={{ padding: 30, textAlign: 'center' }}>
+                        {this.state.isLoading ? 'Loading...' : 'Loaded'}
+                    </div>
+                )}
+                renderSectionHeader={(sectionData) => (
                     <div>{`Task ${sectionData.split(' ')[1]}`}</div>
                 )}
                 renderBodyComponent={() => <MyBody />}
@@ -171,7 +174,7 @@ export default class Demo extends React.Component {
                 renderSeparator={separator}
                 style={{
                     height: this.state.height,
-                    overflow: 'auto',
+                    overflow: 'auto'
                 }}
                 pageSize={4}
                 onScroll={() => { console.log('scroll'); }}

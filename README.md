@@ -17,7 +17,7 @@ Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
-将用于生产的应用程序构建到“build”文件夹。<br />
+将用于生产的应用程序构建到“dist”文件夹。<br />
 它在生产模式下正确地绑定了React并优化构建以获得最佳性能。
 构建被缩小，文件名包含散列。<br />
 Your app is ready to be deployed!
@@ -31,6 +31,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - 使用vw方案适配移动端
 - 引进antd-mobile，且按需引入，可配置antd-mobile自定义主题
 - 使用react-router
+- 使用react-loadable进行路由懒加载
 - 使用路径别名 `tsconfig.json`
 - 改写 creact-react-app内嵌的eslint规则 `.eslintrc.json`
 - 修改css格式化规则 `.jsbeautifyrc`

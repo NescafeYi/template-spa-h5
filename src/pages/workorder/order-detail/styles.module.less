@@ -1,0 +1,56 @@
+.workorder-detail {
+    .label-left>label {
+        white-space: nowrap;
+    }
+    .unit-chunk {
+        background-color: #fff;
+        padding: 15px;
+
+        &+.unit-chunk {
+            margin-top: 8px;
+        }
+
+        .column-wrap {
+            font-size: 16px;
+
+            &+.column-wrap {
+                margin-top: 15px;
+            }
+
+            .column-prefix {
+                width: 5*16px;
+                margin-right: 15px;
+                color: #999999;
+            }
+
+            .column-content {
+                color: #333333;
+            }
+        }
+
+        .header-status {
+            font-size: 18px;
+            padding: 3px 0;
+            line-height: 28px;
+            font-weight: 500;
+            img {
+                height: 28px;
+                vertical-align: top;
+                margin-right: 15px;
+            }
+        }
+
+        .img-lists {
+            img {
+                display: inline-block;
+                width: 75px;
+                height: 75px;
+                object-fit: cover;
+
+                +img {
+                    margin-left: 6px;
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 
 //ie polyfill 兼容9+
-import './polyfill'
+import './polyfill';
 import 'core-js/es';
 import 'mutation-observer';
 import 'react-app-polyfill/ie9';
@@ -11,6 +11,12 @@ import '@/less/index.less';
 import '@/utils/axios-config';
 import * as serviceWorker from './serviceWorker';
 import RouteConfig from './router';
+
+
+
+import VConsole from 'vconsole';
+const isDev = process.env.NODE_ENV.includes('dev');
+if (isDev) new VConsole();
 
 
 ReactDOM.render(<RouteConfig />, document.getElementById('root'));
