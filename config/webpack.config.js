@@ -639,7 +639,7 @@ module.exports = function (webpackEnv) {
             isEnvDevelopment &&
             new WatchMissingNodeModulesPlugin(paths.appNodeModules),
             // 利用ProvidePlugin这个webpack内置API将React设置为全局引入，从而无需单个页面import引入
-            isEnvDevelopment && new webpack.ProvidePlugin({
+            new webpack.ProvidePlugin({
                 React: 'react',
                 ReactDOM: 'react-dom'
             }),
