@@ -1,6 +1,7 @@
 
 // proxy 代理  转发规则
 const proxy = require('http-proxy-middleware');
+
 module.exports = function (app) {
     app.use(proxy(['/cmb-xt-api'], {
         target: 'http://150.129.193.16:1080',

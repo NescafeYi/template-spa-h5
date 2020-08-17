@@ -3,7 +3,7 @@ import styles from './styles.module.less';
 
 export default class Empty extends React.Component {
     static defaultProps = {
-        imgUrl: require('@/assets/no-data.png'),
+        imgUrl: require('@/assets/images/no-data.png'),
         text: '暂无数据'
     }
 

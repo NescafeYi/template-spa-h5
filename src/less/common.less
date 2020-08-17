@@ -69,3 +69,32 @@
 .text-left {
     text-align: left;
 }
+// 通用颜色
+.text-color {
+    color: @color-text-base  !important;
+}
+.tips-color {
+    color: @tips-color  !important;
+}
+.primary-color {
+    color: @brand-primary  !important;
+}
+.minor-color {
+    color: @minor-color  !important;
+}
+// 深色模式
+@media (prefers-color-scheme: dark) {
+    .dark-theme;
+    .text-color {
+        color: @color-text-base  !important;
+    }
+    .tips-color {
+        color: @tips-color  !important;
+    }
+    .primary-color {
+        color: @brand-primary  !important;
+    }
+    .minor-color {
+        color: @minor-color  !important;
+    }
+}

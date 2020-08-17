@@ -4,9 +4,15 @@
 
 import Axios from 'axios';
 import { Toast } from 'antd-mobile';
-import { GetWechatToken } from './wechat';
-import { SetStroageItem } from './storage-utils';
+import { GetWechatToken } from '@/utils/wechat';
+import { SetStroageItem } from '@/utils/storage-utils';
+import { ServiceMessage } from '@/constants';
+import { GetToken } from '@/utils/session';
 
+// 接口的公共参数
+const COMMON_PARAMS = {
+    appId: 'liuxiapp'
+};
 
 /**
  * 添加请求拦截器
@@ -14,9 +20,19 @@ import { SetStroageItem } from './storage-utils';
  */
 Axios.interceptors.request.use((config) => {
     // 在发送请求之前做些什么
-    const token = GetWechatToken();
+    // 设置token 
+    let token = GetToken();
+    if (config.isWechat) {
+        token = GetWechatToken();
+    }
     if (token) {
         config.headers['Authorization'] = token;
+    }
+    // 补充公共参数
+    if (config.params) {
+        config.params = { ...config.params, ...COMMON_PARAMS };
+    } else {
+        config.params = { ...COMMON_PARAMS };
     }
     return config;
 }, (error) => {
@@ -33,25 +49,19 @@ Axios.interceptors.response.use((response) => {
         response.data.srvTime && SetStroageItem('srvTime', response.data.srvTime);
         return response.data;
     }
-    Toast.fail((response.data && response.data.message) || Message.ERROR);
+    Toast.fail((response.data && response.data.message) || ServiceMessage.ERROR);
     return Promise.reject(response);
 }, (error) => {
     // 对响应错误做点什么 , 处理401 403等错误处理
     switch (error.response.status) {
         case 401: case 403:
-            Toast.fail((error.response.data && error.response.data.message) || Message.ERROR);
+            Toast.fail((error.response.data && error.response.data.message) || ServiceMessage.ERROR);
             break;
         default:
-            Toast.fail(Message.ERROR);
+            Toast.fail(ServiceMessage.ERROR);
     }
     return Promise.reject(error.response);
 });
-
-export const Message = {
-    SUCCESS: '请求成功',
-    ERROR: '网络异常，请稍后重试',
-    FAIL: '请求失败，请稍后重试'
-};
 
 
 

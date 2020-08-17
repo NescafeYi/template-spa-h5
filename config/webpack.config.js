@@ -36,8 +36,6 @@ const postcssWriteSvg = require('postcss-write-svg');
 const postcssViewportUnits = require('postcss-viewport-units');
 const cssnano = require('cssnano');
 
-const theme = require('./theme.json');
-
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
@@ -176,7 +174,9 @@ module.exports = function (webpackEnv) {
                     loader: require.resolve(preProcessor),
                     options: {
                         sourceMap: true,
-                        modifyVars: preProcessor === 'less-loader' && theme,
+                        modifyVars: preProcessor === 'less-loader' && {
+                            hack: `true; @import "${path.join(paths.appSrc, 'less', 'global', 'antd-theme.less')}";` // Override with less file
+                        },
                         javascriptEnabled: preProcessor === 'less-loader'
                     }
                 }

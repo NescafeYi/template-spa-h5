@@ -12,7 +12,7 @@ export default class extends React.Component {
         return (
             <div id={styles['page-not-wechat']}>
                 <Result
-                    imgUrl={require('@/assets/icon-fail.png')}
+                    imgUrl={require('@/assets/images/icon-fail.png')}
                     title="请在微信客户端打开链接"
                     message=""
                 />

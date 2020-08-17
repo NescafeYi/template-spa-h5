@@ -1,5 +1,5 @@
 {
-  "name": "support-xt-h5",
+  "name": "liuxi-app-h5",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,6 +21,7 @@
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "core-js": "^3.6.2",
+    "cross-env": "^7.0.2",
     "css-loader": "3.2.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.6.0",
@@ -44,6 +45,7 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "0.8.0",
+    "moment": "^2.27.0",
     "mutation-observer": "^1.0.3",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.5.0",
@@ -60,7 +62,7 @@
     "postcss-write-svg": "^3.0.1",
     "react": "^16.12.0",
     "react-app-polyfill": "^1.0.5",
-    "react-dev-utils": "^10.0.0",
+    "react-dev-utils": "10.0.0",
     "react-dom": "^16.12.0",
     "react-loadable": "^5.5.0",
     "react-photoswipe": "^1.3.0",
@@ -84,8 +86,9 @@
     "yarn": "^1.21.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "start": "cross-env REACT_APP_ENV=dev node scripts/start.js",
+    "build:sit": "cross-env REACT_APP_ENV=sit node scripts/build.js",
+    "build:prod": "cross-env REACT_APP_ENV=prod node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "eslint --ext .js --ext .jsx src/",
     "precommit": "yarn lint"

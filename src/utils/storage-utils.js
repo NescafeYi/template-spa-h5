@@ -1,28 +1,26 @@
-import { HasOwnProperty } from './data-utils';
+const SYSTEM_NAME = 'liuxi-app:';
 
-const SYSTEM_NAME = ''; //可添加统一缓存的前缀名
-
-var _setItem = function _setItem(key, value) {
+let _setItem = function _setItem(key, value) {
     sessionStorage.setItem(SYSTEM_NAME + key, value);
 };
 
-var _getItem = function _getItem(key, defaultValue) {
+let _getItem = function _getItem(key, defaultValue) {
     return sessionStorage.getItem(SYSTEM_NAME + key) || defaultValue;
 };
 
-var _removeItem = function _removeItem(key) {
+let _removeItem = function _removeItem(key) {
     sessionStorage.removeItem(SYSTEM_NAME + key);
 };
 
-var _setLocalItem = function _setItem(key, value) {
+let _setLocalItem = function _setItem(key, value) {
     localStorage.setItem(SYSTEM_NAME + key, value);
 };
 
-var _getLocalItem = function _getItem(key, defaultValue) {
+let _getLocalItem = function _getItem(key, defaultValue) {
     return localStorage.getItem(SYSTEM_NAME + key) || defaultValue;
 };
 
-var _removeLocalItem = function _removeItem(key) {
+let _removeLocalItem = function _removeItem(key) {
     localStorage.removeItem(SYSTEM_NAME + key);
 };
 
@@ -45,21 +43,21 @@ export const StringifyStroageItem = (key, value, isSession) => {
     }
 };
 export const GetStroageItem = function (key, defaultValue, isSession) {
-    if (isSession) {
+    if (isSession == false || isSession == undefined) {
         return _getLocalItem(key, defaultValue);
     } else {
         return _getItem(key, defaultValue);
     }
 };
 export const SetStroageItem = function (key, value, isSession) {
-    if (isSession) {
+    if (isSession == false || isSession == undefined) {
         _setLocalItem(key, value);
     } else {
         _setItem(key, value);
     }
 };
 export const RemoveStroageItem = function (key, isSession) {
-    if (isSession) {
+    if (isSession == false || isSession == undefined) {
         _removeLocalItem(key);
     } else {
         _removeItem(key);
@@ -68,27 +66,30 @@ export const RemoveStroageItem = function (key, isSession) {
 export const ClearStroage = () => {
     // 清掉当前系统所有的storage储存
     for (const key in localStorage) {
-        if (HasOwnProperty(localStorage, key)) {
-            if (key.indexOf(SYSTEM_NAME) === 0) {
+        if (Object.prototype.hasOwnProperty.call(localStorage, key)) {
+            if (key.indexOf(SYSTEM_NAME) == 0) {
                 localStorage.removeItem(key);
             }
         }
     }
     for (const key in sessionStorage) {
-        if (HasOwnProperty(sessionStorage, key)) {
-            if (key.indexOf(SYSTEM_NAME) === 0) {
+        if (Object.prototype.hasOwnProperty.call(sessionStorage, key)) {
+            if (key.indexOf(SYSTEM_NAME) == 0) {
                 sessionStorage.removeItem(key);
             }
         }
     }
 };
-
-// 获取服务器时间
-export const GetStorageSrvTime = () => {
-    let srvTime = StorageUtils.getItem('srvTime', null);
-    return srvTime;
+export const ClearSessionStroage = () => {
+    // 清掉当前系统所有的session储存
+    for (const key in sessionStorage) {
+        if (Object.prototype.hasOwnProperty.call(sessionStorage, key)) {
+            if (key.indexOf(SYSTEM_NAME) == 0) {
+                sessionStorage.removeItem(key);
+            }
+        }
+    }
 };
-
 const StorageUtils = {
     setItem: SetStroageItem,
     getItem: GetStroageItem,

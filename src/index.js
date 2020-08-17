@@ -6,18 +6,16 @@ import 'mutation-observer';
 import 'react-app-polyfill/ie9';
 import 'react-app-polyfill/stable';
 
-
 import '@/less/index.less';
-import '@/utils/axios-config';
+import '@/services/axios-config';
 import * as serviceWorker from './serviceWorker';
 import RouteConfig from './router';
 
-
-
 import VConsole from 'vconsole';
-const isDev = process.env.NODE_ENV.includes('dev');
-if (isDev) new VConsole();
 
+// 开发环境和测试环境打开VConsole
+const isDevOrSit = process.env.REACT_APP_ENV.includes('dev') || process.env.REACT_APP_ENV.includes('sit');
+if (isDevOrSit) new VConsole();
 
 ReactDOM.render(<RouteConfig />, document.getElementById('root'));
 

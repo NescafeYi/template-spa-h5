@@ -1,15 +1,15 @@
-import loadable from '@/utils/route-config';
+import loadable from '@/router/route-config';
 
 // 配置路由
 export const routes = [
     {
-        path: '/home',
-        component: loadable(() => import('@/pages/home'))
+        path: '/statistics',
+        auth: true,
+        component: loadable(() => import('@/pages/statistics'))
     },
     {
-        path: '/authWechat',
-        inWechat: true,
-        component: loadable(() => import('@/pages/auth-wechat'))
+        path: '/home',
+        component: loadable(() => import('@/pages/home'))
     },
     {
         path: '/notWechat',
