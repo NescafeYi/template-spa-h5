@@ -14,7 +14,11 @@ module.exports = {
                 // 'plugin:react/recommended',
                 'plugin:@typescript-eslint/recommended',
                 // 'plugin:jsx-control-statements/recommended'
-            ]
+            ],
+            rules: {
+                '@typescript-eslint/no-explicit-any': 'off',  //关掉ts 定义为any类型的warning
+                '@typescript-eslint/explicit-function-return-type': 'off', //取消对函数返回类型的强检查
+            }
         },
         {
             files: ['*.js', '*.jsx'],
@@ -32,7 +36,6 @@ module.exports = {
         }
     ],
     rules: {
-        '@typescript-eslint/no-explicit-any': 'off',  //关掉ts 定义为any类型的warning
         'react/jsx-boolean-value': 2, //在JSX中属性值为 true, 可以直接省略
         'react/jsx-curly-spacing': [
             2,
@@ -116,7 +119,7 @@ module.exports = {
         ReactRouter: true,
         UE: true,
         EleConst: true,
-        _: true,
+        _: true
     },
     settings: {
         react: {
