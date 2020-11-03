@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `yarn start`
 在开发模式下运行app<br />
-打开[http://localhost:8126](http://localhost:8126)在浏览器中查看。
+打开[http://localhost:8316](http://localhost:8316)在浏览器中查看。
 如果进行编辑，页面将重新加载。<br />
 您还将在控制台中看到任何lint错误。
 
@@ -34,6 +34,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - 全局样式变量及方法`src/less/global/index.less`
 - 使用react-router
 - 使用react-loadable进行路由懒加载 `src/utils/route-config.js`
+- 使用redux状态管理 `src/redux`
 - 使用路径别名 `tsconfig.json`
 - 改写 creact-react-app内嵌的eslint规则 `.eslintrc.json`、`.eslintrc.js`
 - 修改css格式化规则 `.jsbeautifyrc`
