@@ -27,6 +27,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### 当前项目已扩展（在creact-react-app的基础上）
 - 兼容ie9+,已补充`polyfill`垫片
+- 支持TypeScript
 - 可使用less sass
 - 使用vw方案适配移动端 `config/webpack.config.js 130行~156行`
 - 引进antd-mobile，且按需引入，可配置antd-mobile自定义主题`config/theme.json`
