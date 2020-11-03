@@ -21,9 +21,10 @@ export const LoadingComponent = ({ isLoading, error }) => {
 
 //过场组件默认采用通用的，若传入了loading，则采用传入的过场组件
 export default (loader, loading = LoadingComponent) => {
-    return Loadable({
-        loader,
-        loading
-    });
+    let LoaderFun = Loadable({ loader, loading });
+    let originalWillMount = LoaderFun.prototype.componentWillMount;
+    LoaderFun.prototype.UNSAFE_componentWillMount = originalWillMount;
+    delete LoaderFun.prototype.componentWillMount; // 解决 react-loadable 的 componentWillMount warning
+    return LoaderFun;
 };
 
