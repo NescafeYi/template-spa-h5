@@ -3,16 +3,16 @@
 import thunk from 'redux-thunk'; // redux-thunk 支持 dispatch function，并且可以异步调用它
 // import { createLogger } from 'redux-logger'; // 利用redux-logger打印日志
 import { createStore, applyMiddleware, compose } from 'redux'; // 引入redux createStore、中间件及compose 
-const isDev = process.env.NODE_ENV === 'dev' || process.env.NODE_ENV === 'sit';
+const isDev = process.env.REACT_APP_ENV !== 'prod';
 
 // 调用日志打印方法
 // const loggerMiddleware = createLogger();
 
 // // 创建一个中间件集合
 const middleware = [
-    thunk
-    //打印redux日志，需要调试的时候打开，可以在控制台查看redux每次的变化
-    // loggerMiddleware,
+  thunk
+  //打印redux日志，需要调试的时候打开，可以在控制台查看redux每次的变化
+  // loggerMiddleware,
 ];
 // 用参数列表的方式，方便动态决定要传入哪些插件
 const attrs = [applyMiddleware(...middleware)];

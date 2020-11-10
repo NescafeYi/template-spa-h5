@@ -3,23 +3,24 @@
 // import { GetToken } from '@/core/session';
 
 const AcitonType = {
-    USER_MENU: 'COMMON:USER_MENU',
-    RELOAD_TAG: 'RELOAD_TAG'
+  USER_MENU: 'COMMON:USER_MENU',
+  RELOAD_TAG: 'RELOAD_TAG'
 };
 
 //初始化state数据
 const initState = {};
 
 
-const commonStore = (state = initState, action) => {
-    switch (action.type) {
-        case AcitonType.USER_MENU:
-            return { ...state, ...action };
-        case AcitonType.RELOAD_TAG:
-            return { ...state, ...action };
-        default:
-            return state;
-    }
+const commonStore = (state, action) => {
+  state = state || initState;
+  switch (action.type) {
+    case AcitonType.USER_MENU:
+      return { ...state, ...action };
+    case AcitonType.RELOAD_TAG:
+      return { ...state, ...action };
+    default:
+      return state;
+  }
 };
 export default commonStore;
 

@@ -1,34 +1,34 @@
 // 放全局的样式方法
 
 .height(@h: 30px) {
-    height: @h;
-    line-height: @h;
+  height: @h;
+  line-height: @h;
 }
 
 // 清除浮动
 .clearfix() {
-    &:before,
-    &:after {
-        content: " "; // 1
-        display: table; // 2
-    }
-    &:after {
-        clear: both;
-    }
-    *zoom: 1;
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+  *zoom: 1;
 }
 
 // 超出省略
 .text-ellipsis(@max-w: 300px) {
-    max-width: @max-w;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  max-width: @max-w;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 // 文本省略号
 .text-overflow() {
-    overflow: hidden;
-    text-overflow: ellipsis; // text-align: left;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; // text-align: left;
+  white-space: nowrap;
 }

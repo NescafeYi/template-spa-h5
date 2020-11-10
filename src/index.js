@@ -12,9 +12,7 @@ import * as serviceWorker from './serviceWorker';
 import RouteConfig from './router';
 
 import { Provider } from 'react-redux';
-import rootReducer from '@/redux/index';
-import configStore from '@/redux/store'; //引入store配置
-const store = configStore(rootReducer);
+import store from '@/redux/index';
 
 import VConsole from 'vconsole';
 
@@ -23,10 +21,10 @@ const isDevOrSit = process.env.REACT_APP_ENV.includes('dev') || process.env.REAC
 if (isDevOrSit) new VConsole();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <RouteConfig />
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <RouteConfig />
+  </Provider>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -2,21 +2,21 @@ import { SetStroageItem, GetStroageItem, RemoveStroageItem, ParseStroageItem, Cl
 import { SessionConst, LocalConst } from '@/constants/storage';
 
 export const ClearUserInfo = () => {
-    RemoveStroageItem(SessionConst.SRV_TIME, false);
-    RemoveStroageItem('token', false);
-    RemoveStroageItem('user_info', false);
-    ClearSessionStroage();
+  RemoveStroageItem(SessionConst.SRV_TIME, false);
+  RemoveStroageItem('token', false);
+  RemoveStroageItem('user_info', false);
+  ClearSessionStroage();
 };
 const TOKEN_ITEM_NAME = 'token';
 
 export const TokenStorage = {
-    get: (token) => GetStroageItem(TOKEN_ITEM_NAME, token),
-    put: (token, isExternal = false) => {
-        // 重置登录失效的状态
-        delete global.tokenFail;
-        SetStroageItem(SessionConst.IS_EXTERNAL_AUTH, isExternal, true);
-        SetStroageItem(TOKEN_ITEM_NAME, token);
-    }
+  get: (token) => GetStroageItem(TOKEN_ITEM_NAME, token),
+  put: (token, isExternal = false) => {
+    // 重置登录失效的状态
+    delete global.tokenFail;
+    SetStroageItem(SessionConst.IS_EXTERNAL_AUTH, isExternal, true);
+    SetStroageItem(TOKEN_ITEM_NAME, token);
+  }
 };
 export const SetToken = TokenStorage.put;
 export const GetToken = TokenStorage.get;
@@ -55,26 +55,26 @@ export const IsExternalAuth = () => ParseStroageItem(SessionConst.IS_EXTERNAL_AU
 // }
 // };
 const keys = {
-    PARAM: 'param',
-    USER_INFO: 'user_info'
+  PARAM: 'param',
+  USER_INFO: 'user_info'
 };
 
 export const SetUserInfo = function (userInfo) {
-    SetStroageItem(keys.USER_INFO, JSON.stringify(userInfo));
+  SetStroageItem(keys.USER_INFO, JSON.stringify(userInfo));
 };
 export const GetUserInfo = function () {
-    var paramObj;
-    var param = GetStroageItem(keys.USER_INFO);
-    if (param != undefined) {
-        paramObj = JSON.parse(param);
-    }
-    return paramObj;
+  var paramObj;
+  var param = GetStroageItem(keys.USER_INFO);
+  if (param != undefined) {
+    paramObj = JSON.parse(param);
+  }
+  return paramObj;
 };
 
 // 获取服务器时间戳
 export const GetSrvTime = () => {
-    let time = GetStroageItem(SessionConst.SRV_TIME, null, true);
-    return parseInt(time);
+  let time = GetStroageItem(SessionConst.SRV_TIME, null, true);
+  return parseInt(time);
 };
 
 // 获取缓存的版本号
